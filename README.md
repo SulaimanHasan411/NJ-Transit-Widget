@@ -6,3 +6,5 @@ Using the location of the user, we find the nearest NJ Transit train station and
 
 
 We built our project on the iOS Xcode IDE, using Swift and SwiftUI. We utilized NJ Transit API to find out the timings of the next trains, and NJ Transit Rail Data Sets for the exact locations of the train stations. Libraries we used in Swift include: CoreLocation to find out the users location, Foundation, and WidgetKit so we could format our widget and use it on a phone.
+
+Devpost link: https://devpost.com/software/nj-transit-train-times-widget
