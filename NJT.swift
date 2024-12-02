@@ -23,7 +23,7 @@ struct testApp: App {
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     private var sharedDefaults = UserDefaults(suiteName: "group.com.yourcompany.trainwidget")
-
+    
     override init() {
         super.init()
         locationManager.delegate = self
@@ -32,14 +32,14 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-
+    
     // CLLocationManagerDelegate method
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-
+        
         let userLat = location.coordinate.latitude
         let userLon = location.coordinate.longitude
-
+        
         if let closestStation = findClosestStation(userLat: userLat, userLon: userLon) {
             sharedDefaults?.set(closestStation.stopName, forKey: "ClosestStation")
             WidgetCenter.shared.reloadAllTimelines()
@@ -48,7 +48,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             print("No closest station found.")
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
     }
@@ -214,35 +214,35 @@ let stations: [Station] = [
     Station(stopID: 158, stopName: "WOODBRIDGE", stopLat: 40.556610, stopLon: -74.277751),
     Station(stopID: 159, stopName: "WOODCLIFF LAKE", stopLat: 41.021078, stopLon: -74.040775),
     Station(stopID: 160, stopName: "WOOD-RIDGE", stopLat: 40.843974, stopLon: -74.078719),
-    Station(stopId: 9878, stopName: "PORT IMPERIAL HBLR STATION", stopLat: 40.775919, stopLon: -74.012921),
-    Station(stopId: 32905, stopName: "HAMILTON", stopLat: 40.255309, stopLon: -74.704120),
-    Station(stopId: 32906, stopName: "JERSEY AVE.", stopLat: 40.476912, stopLon: -74.467363),
-    Station(stopId: 37169, stopName: "ABERDEEN-MATAWAN", stopLat: 40.420161, stopLon: -74.223702),
-    Station(stopId: 37953, stopName: "NEWARK AIRPORT RAILROAD STATION", stopLat: 40.704415, stopLon: -74.190717),
-    Station(stopId: 38081, stopName: "MSU", stopLat: 40.869782, stopLon: -74.197439),
-    Station(stopId: 38105, stopName: "UNION", stopLat: 40.683663, stopLon: -74.238605),
-    Station(stopId: 38174, stopName: "FRANK R LAUTENBERG SECAUCUS LOWER LEVEL", stopLat: 40.761188, stopLon: -74.075821),
-    Station(stopId: 38187, stopName: "FRANK R LAUTENBERG SECAUCUS UPPER LEVEL", stopLat: 40.761188, stopLon: -74.075821),
-    Station(stopId: 38307, stopName: "BROADWAY ACROSS FROM WRTC", stopLat: 39.943258, stopLon: -75.120210),
-    Station(stopId: 38417, stopName: "RAMSEY ROUTE 17 STATION", stopLat: 41.075130, stopLon: -74.145485),
-    Station(stopId: 38578, stopName: "BERGENLINE AVE", stopLat: 40.782225, stopLon: -74.022271),
-    Station(stopId: 39472, stopName: "MOUNT ARLINGTON", stopLat: 40.896590, stopLon: -74.632731),
-    Station(stopId: 39635, stopName: "WAYNE/ROUTE 23 TRANSIT CENTER [RR]", stopLat: 40.900254, stopLon: -74.256971),
-    Station(stopId: 40570, stopName: "MEADOWLANDS SPORTS COMPLEX STATION", stopLat: 40.813053, stopLon: -74.072114),
-    Station(stopId: 43298, stopName: "PENNSAUKEN TRANSIT CENTER", stopLat: 39.977769, stopLon: -75.061796),
-    Station(stopId: 43599, stopName: "WESMONT", stopLat: 40.854979, stopLon: -74.096951),
+    Station(stopID: 9878, stopName: "PORT IMPERIAL HBLR STATION", stopLat: 40.775919, stopLon: -74.012921),
+    Station(stopID: 32905, stopName: "HAMILTON", stopLat: 40.255309, stopLon: -74.704120),
+    Station(stopID: 32906, stopName: "JERSEY AVE.", stopLat: 40.476912, stopLon: -74.467363),
+    Station(stopID: 37169, stopName: "ABERDEEN-MATAWAN", stopLat: 40.420161, stopLon: -74.223702),
+    Station(stopID: 37953, stopName: "NEWARK AIRPORT RAILROAD STATION", stopLat: 40.704415, stopLon: -74.190717),
+    Station(stopID: 38081, stopName: "MSU", stopLat: 40.869782, stopLon: -74.197439),
+    Station(stopID: 38105, stopName: "UNION", stopLat: 40.683663, stopLon: -74.238605),
+    Station(stopID: 38174, stopName: "FRANK R LAUTENBERG SECAUCUS LOWER LEVEL", stopLat: 40.761188, stopLon: -74.075821),
+    Station(stopID: 38187, stopName: "FRANK R LAUTENBERG SECAUCUS UPPER LEVEL", stopLat: 40.761188, stopLon: -74.075821),
+    Station(stopID: 38307, stopName: "BROADWAY ACROSS FROM WRTC", stopLat: 39.943258, stopLon: -75.120210),
+    Station(stopID: 38417, stopName: "RAMSEY ROUTE 17 STATION", stopLat: 41.075130, stopLon: -74.145485),
+    Station(stopID: 38578, stopName: "BERGENLINE AVE", stopLat: 40.782225, stopLon: -74.022271),
+    Station(stopID: 39472, stopName: "MOUNT ARLINGTON", stopLat: 40.896590, stopLon: -74.632731),
+    Station(stopID: 39635, stopName: "WAYNE/ROUTE 23 TRANSIT CENTER [RR]", stopLat: 40.900254, stopLon: -74.256971),
+    Station(stopID: 40570, stopName: "MEADOWLANDS SPORTS COMPLEX STATION", stopLat: 40.813053, stopLon: -74.072114),
+    Station(stopID: 43298, stopName: "PENNSAUKEN TRANSIT CENTER", stopLat: 39.977769, stopLon: -75.061796),
+    Station(stopID: 43599, stopName: "WESMONT", stopLat: 40.854979, stopLon: -74.096951),
 ]
 
 func haversineDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double) -> Double {
     let earthRadius = 6371.0 // in kilometers
-
+    
     let dLat = (lat2 - lat1).degreesToRadians
     let dLon = (lon2 - lon1).degreesToRadians
-
+    
     let a = sin(dLat / 2) * sin(dLat / 2) +
-            cos(lat1.degreesToRadians) * cos(lat2.degreesToRadians) *
-            sin(dLon / 2) * sin(dLon / 2)
-
+    cos(lat1.degreesToRadians) * cos(lat2.degreesToRadians) *
+    sin(dLon / 2) * sin(dLon / 2)
+    
     let c = 2 * atan2(sqrt(a), sqrt(1 - a))
     return earthRadius * c
 }
@@ -256,7 +256,7 @@ extension Double {
 func findClosestStation(userLat: Double, userLon: Double) -> Station? {
     var closestStation: Station?
     var minDistance = Double.greatestFiniteMagnitude
-
+    
     for station in stations {
         let distance = haversineDistance(lat1: userLat, lon1: userLon, lat2: station.stopLat, lon2: station.stopLon)
         if distance < minDistance {
@@ -264,13 +264,13 @@ func findClosestStation(userLat: Double, userLon: Double) -> Station? {
             closestStation = station
         }
     }
-
+    
     return closestStation
 }
 
 class ViewController: UIViewController {
     let locationManager = LocationManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Remove the call to startUpdatingLocation()
