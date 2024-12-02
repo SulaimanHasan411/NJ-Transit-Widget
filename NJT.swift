@@ -11,7 +11,7 @@ import CoreLocation
 import Foundation
 import UIKit
 
-@main
+//@main
 struct testApp: App {
     var body: some Scene {
         WindowGroup {
