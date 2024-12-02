@@ -206,8 +206,8 @@ let userLatitude = 0.0
 let userLongitude = 0.0
 let userLocation = CLLocation(latitude: userLatitude, longitude: userLongitude)
 
-if let nearestStop = closestStop(to: userLocation) {
-    print("closest stop: \(nearestStop.stopName), stop id: \(nearestStop.stopId)")
-} else {
-    print("not found")
-}
+// if let nearestStop = closestStop(to: userLocation) {
+//     print("closest stop: \(nearestStop.stopName), stop id: \(nearestStop.stopId)")
+// } else {
+//     print("not found")
+// }
